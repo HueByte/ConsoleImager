@@ -38,7 +38,7 @@ for (int h = 0; h < outputArr.GetLength(0); h++)
     }
 
     Console.Write(output);
-    await Task.Delay(100);
+    await Task.Delay(1);
 }
 
 static string GetPrinter(SKColor color)
