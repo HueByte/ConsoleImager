@@ -6,9 +6,9 @@ Print your image in console! <br>*Now with all the colors you want*
 ```
 ./ConsoleImager {link} {[Optional]height} {[Optional]width}
 ```
----
 
 # ⚙️ `Usage`
+
 ## 🪟 `Windows`
 > Command syntax:
 ```cs
