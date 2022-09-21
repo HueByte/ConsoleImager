@@ -14,17 +14,18 @@ bitmap.ScalePixels(resizedImage, SKFilterQuality.Low);
 
 for (int h = 0; h < resizedImage.Height; h++)
 {
+    string line = "";
     for (int w = 0; w < resizedImage.Width; w++)
     {
         var pixel = resizedImage.GetPixel(w, h);
-        PrintOne(new SKColor(pixel.Red, pixel.Green, pixel.Blue));
+        line += GetPrinter(new SKColor(pixel.Red, pixel.Green, pixel.Blue));
     }
-
-    Console.WriteLine();
+    Console.WriteLine(line);
+    await Task.Delay(15);
 }
 
-static void PrintOne(SKColor color)
+static string GetPrinter(SKColor color)
 {
-    var test = $"\u001b[38;2;{color.Red};{color.Green};{color.Blue}m█";
-    Console.Write(test);
+    var result = $"\u001b[38;2;{color.Red};{color.Green};{color.Blue}m█";
+    return result;
 }
