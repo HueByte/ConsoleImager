@@ -32,7 +32,8 @@ Print your image in console! <br>*Now with all the colors you want*
 > Configuration
 Allow user to use the program
 ```cs
-chmod 777 ./ConsoleImager
+chown $USER:$USER ConsoleImager
+chmod 755 ./ConsoleImager
 ```
 
 > Command syntax: 
