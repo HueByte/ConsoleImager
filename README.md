@@ -51,3 +51,8 @@ dotnet publish -c release -r linux-x64 -p:PublishSingleFile=true -o ./linux-x64
 Publish command docs: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish 
 
 RID publish docs: https://learn.microsoft.com/en-us/dotnet/core/rid-catalog
+
+## Result example
+## Draxis
+["rendering" video](https://www.youtube.com/watch?v=-nEG29wJrjE)
+<img src="https://blazebin.net/r/epit9p.png" />
