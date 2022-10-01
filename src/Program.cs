@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.Serialization.Formatters;
-using SkiaSharp;
+﻿using SkiaSharp;
 
 HttpClient client = new();
 
