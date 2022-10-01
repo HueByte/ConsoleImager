@@ -1,16 +1,20 @@
-﻿using SkiaSharp;
+﻿using System.Collections;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Serialization.Formatters;
+using SkiaSharp;
 
 HttpClient client = new();
 
 var imageUrl = args.Length != 0 ? args[0] : "https://preview.redd.it/653ztm9yjtg31.jpg?auto=webp&s=da7aeb94db7f956bea0f2a4b1543af4714cbadc4";
-int width = !(args.Length <= 1) ? Convert.ToInt32(args[1]) : 100;
-int height = !(args.Length <= 2) ? Convert.ToInt32(args[2]) : Convert.ToInt32(width * 0.5);
-
 var imageBytes = await client.GetByteArrayAsync(imageUrl);
 var bitmap = SKBitmap.Decode(imageBytes);
 
+var ratio = (double)bitmap.Width / bitmap.Height;
+int width = !(args.Length <= 1) ? Convert.ToInt32(args[1]) : 100;
+int height = !(args.Length <= 2) ? Convert.ToInt32(args[2]) : (int)(width / ratio);
+
 SKBitmap resizedImage = new(width, height);
-bitmap.ScalePixels(resizedImage, SKFilterQuality.Low);
+bitmap.ScalePixels(resizedImage, GetFilterQuality(width));
 
 ParallelOptions options = new()
 {
@@ -38,11 +42,18 @@ for (int h = 0; h < outputArr.GetLength(0); h++)
     }
 
     Console.Write(output);
-    await Task.Delay(1);
 }
 
 static string GetPrinter(SKColor color)
 {
     var result = $"\u001b[38;2;{color.Red};{color.Green};{color.Blue}m█";
     return result;
+}
+
+static SKFilterQuality GetFilterQuality(int width)
+{
+    if (width <= 100) return SKFilterQuality.Low;
+    else if (width <= 500) return SKFilterQuality.Medium;
+    else if (width <= 1500) return SKFilterQuality.High;
+    else return SKFilterQuality.Low;
 }
