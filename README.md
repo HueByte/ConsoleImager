@@ -54,5 +54,5 @@ RID publish docs: https://learn.microsoft.com/en-us/dotnet/core/rid-catalog
 
 ## Result example
 ## Draxis
-["rendering" video](https://www.youtube.com/watch?v=-nEG29wJrjE)
+["rendering" video](https://youtu.be/-nEG29wJrjE)
 <img src="https://blazebin.net/r/epit9p.png" />
